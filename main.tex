@@ -33,7 +33,7 @@
 \renewcommand\theequation{\thesection.\arabic{equation}}
 \@addtoreset{equation}{section}
 \makeatother
-
+\usepackage{verbatim}
 \usepackage{setspace}
 \onehalfspacing
 \usepackage{etex}
@@ -65,7 +65,7 @@
         \parbox[c][\paperheight]{\paperwidth}{%
             \vfill
             \centering
-            {\transparent{1}\includegraphics[width=1.25\textwidth]{banderolleULB.png}}%
+            {\transparent{1}\includegraphics[width=1.25\textwidth]{ulb.png}}%
             \vfill
         }
     }
@@ -93,7 +93,7 @@
 
 % Title
 \HRule \\[0.4cm]
-{ \huge \bfseries Silica Gel}\\[0.4cm]
+{ \huge \bfseries Mechanics of materials: laboratories}\\[0.4cm]
 
 \HRule \\[0.5cm]%[4cm]
 
@@ -113,8 +113,9 @@
 \end{doublespace}
 %Nos Noms alignés par ordre alphab
 \begin{tabular}{ll}
-Youri&\textbf{Cardamone}\\
-Léonard &\textbf{Darago}\\
+Léonard G.&\textbf{Darago}\\
+Thomas B.&\textbf{Gillet}\\
+
 
 \end{tabular}
 %%%%%%%%%%%
@@ -127,8 +128,8 @@ Léonard &\textbf{Darago}\\
 \end{doublespace}
 %Nos Noms alignés par ordre alphab
 \begin{tabular}{ll} 
-Pierre &\textbf{d'Ans}\\
-Marie-Paule&\textbf{Delplancke}
+Thierry J. &\textbf{Massart}\\
+
 
 
 \end{tabular}
@@ -147,161 +148,77 @@ Marie-Paule&\textbf{Delplancke}
 \end{center}
 
 \end{titlepage} 
+\section*{Running a linear analysis}
+\subsection*{Question 1}
+There are three elements in a node, three nodes per triangle; this means that there are 2 nodes per side of the triangle,the interpolation is therefore linear. Since the displacement field is linear and the solution is searched using linear functions, the exact solution will be found numerically. The problem is linear. since in the final element approximation there is a connection between the number of nodes and the degree of the form functions that are used. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=10cm]{ex1_mesh.jpg}
+\caption{Mesh of the first exercise with a node at each corner.}
+\end{figure}
+
+\subsection*{Question 2}
+It is not because there is no load in the data files that there is no loading, it can hence be applied through imposed displacement. 
+\subsection*{Question 3}
+When the computation is run there are different steps. At each step, it is supposed that the structure behaves linearly. If the problem is not linear and we suppose that we are in a linear case, then at each step it would have been necessary to realize several iteration. Since only one iteration is necessary at each step, it means that the problem is linear.
+\subsection*{Question 4}
 
 
-
-
-
-
-
-
-
-
-
-
-
-\section*{Abstract}
-Silica gel is good.\\
-Ani nullor rate et, omnimus est quodia simusci uribus sin re, venita voluptaquam
-quod unt am evenece stinia sunt et dolor modia simenti busapel laccaborion
-nobis ma quis nis restrum quibeaquas ratecep erspidendus, sunt ent harumet
-audam in nis pra.
-\section{Introduction}
-Nowadays, it is important to promote the use of renewable energies. The solar energy is one of the most promising renewable energies but requires a long-term heat storage. %Indeed, the major problem with that kind of energy is the inconstancy of the production.(???) 
-\\A possible candidate to the thermal heat storage is a composite made of $CaCl_2$ and silica gel. The aim of the $CaCl_2$ is to store the heat.
-\\In Winter, humid air should pass through the calcium chloride which is exothermic as it dissolves, leading thus to a heat liberation. While in Summer, the temperature is much higher, the water from the humid calcium chloride is expelled. This is an endothermic process, leading to a cooling of the room.\textcolor{red}{T'es sûr de ça ? C'est pas plutôt quand il cristallise/melt ?} \textcolor{blue}{perso c'ets ce que j'ai noté et j'ai été cherché sur internet et ils expliquaient que contrairement aux autres sels, le calc2 est endothermique quand il cristallise https://www.quora.com/Why-is-calcium-chloride-exothermic-as-it-dissolves}
-\\However, the $CaCl_2$ requires a matrix in order to stay stable. For that purpose, it is necessary to produce a cheap matrix. The aim of this project is to produce a cheap matrix made of silica gel. 
-\\It is for this purpose that this project was focused on the recycling of Rice Husk Ash (RHA), a rice waste rich in silica, into silica gel. 
-Challenges are numerous: producing a green and cost-effective silica gel which have good properties such as good pore diameter and a good volume in order to incorporate enough $CaCl_2$ for the heat storage application.
-\\On a first part the various works on the subject were studied. The influence of the synthesis parameters on the final properties of the gel were examined. The different properties that the final gel should had for the heat storage application was discussed. This permits to come up with an experimental procedure to synthesize the porous silica gel.
-%------------------------------------------------------------------------
-\clearpage
-\section{Literature survey}
-
-
-In order to study the variation of the properties based on the different parameters, it was necessary to have an overview of the different experiments that were already studied. For that purpose, table [] was made.
-\subsection*{Theoretical review} 
-
-\subsection*{Review of the previous papers}
-
-\subsubsection*{Silica Gel}
-A main issue is that numerous protocol have been used in the different papers and in those experimental procedures, the main parameters are disparates. Highlighting a certain causal relationship between the experimental parameters and the obtained properties is thus arduous.
-\\However the different papers \cite{julie} \cite{Fengge} agree on the route to follow to produce silica gel from a silica waste. First a dissolution of the waste in presence of a strong base has to occurred, follow by a filtration. Then a gelation step is realised to obtain a gel and finally a drying step is done. This provides the overall procedure to follow but not the characteristics and value of the parameters and ...
-\\\cite{Pin} pays special attention to the agitation and the heat of the RHA during the dissolution. It was found \cite{julie} out that agitation increases drastically the amount of Si dissolved and that a dissolution temperature of 150°C was better because of the kinetic aspect and/or because of the best solubility of waterglass at this temperature.
+\section*{Running a geometrically non-linear analysis}
+\subsection*{Question 5}
+At a first glimpse, the two files \verb|square_compress.m and square_compress_lin.m| look similar.
+The main difference is that the outputs of those two files are different. 
+\\On a first hand,in \verb|square_compress_lin.m| the output are :
+\begin{itemize}
+\item The displacement
+\item The strain
+\item The stress
+\end{itemize}
+All those outputs are linear.
+\\On the second hand, \verb|square_compress.m| has non-linear outputs:
+\begin{itemize}
+\item The displacement
+\item pkstrs
+\item Green deformation
+\end{itemize}
+The non-linearity of the \verb|square_compress.m| outputs is the presence of the Green deformation.
+$\epsilon_{Green}=\frac{1}{2}(\lambda^2 -1)$.
+The maximal iteration authorized are set to 7 for the linear file and to 20 for the non-linear file. However, when the code is executed, the results are obtained in 1 iteration for the compress.m and in 2 iterations for the \verb|square_compress.m|There is only two iteration needed for the non-linear file since one stopped when the difference between the applied load and the load one want is below the tolerance that is set at $10^{-7}$ in the code.
 \\
-\\One of the paper \cite{Fengge} studies the influence of the pH during gelation and its influence on the pore volume, the pore size and the bulk density. It was  that between a pH varying drom 4 to 6 with a 0,5 pH steps, the specific surface area was increasing from 620 $m^2/g$ to 945 $m^2/g$ as the total pore volume that went from 0,606 $cm^3/g$ to 0,9 $cm^3/g$. This increased in the total pore volume was accompanied with a pore size average decreases (from 6,65nm at ph=4,5 to 3,80 nm at pH=6) and by a bulk density decrease.
-\\In an other study, the rate of gelation seems to be fastest near a pH=6 \cite{julie}. In that paper, a two steps gelation was prefered in order to promote the dimerization and thus have a faster and more effective polycondensation. However having a two steps pH does not seems to be an interesting.\textcolor{blue}{compléter phrase}
-\\An other paper that was studying the production of silica gel from RHA, found out that during gelation, the best yield (31,9\%) was obtained for a pH=2.  Nevertheless, it should be noted, that in this paper the only pH studied were 2, 8, 9, 10 and 11.
+\\The Poisson coefficient is high for rubbery-like materials since for this kind of materials there is no change of volume, it is incompressible.
 \\
-\textcolor{red}{Là c'est vraiment un moyen de gagner des pages sur ce projets on peut facilement en écrire 2 en comptant le tableau qui prendra une demie-page.
-\\On peut notamment dire que les différentes sources ont étudiés des paramètres bien différents et que cependant il est dure de relier ces paramètres à des caractéristiques précises du silica gel obtenus car les protocoles utilisés diffèrent tous les uns des autres.
-\\Après on peut s'attarder sur qlqs papiers et expliquer ce qui nous semble découler de ça et expliquer le tableau :D}
+\\The law as the same form, but relates to quantities that are different, it is an hyperelastic law.
+\\
+\\Validity domain, was defined by ourself at 1\%. Works until the $11^{th}$ iteration and thus till a force of $1\times 10^{-1}$
 
-\subsection*{$CaCl_2$ incorporation}
-The $CaCl_2$ incorporation into the porous silica gel matrix has already been studied in the literature. it was shown that 
-the incorporation process consist into a succession of impregnation-evaporation of a high content solution of $CaCl_2$ \cite{courbon}.
-\\According to the patent \cite{brevet} that studies the incorporation of $CaCl_2$ into a silica gel matrix, four impregnations are needed in order to have at least 40w\% of $CaCl_2$ incorporated in the silica gel.
+\section*{Effect of a rigid body rotation on the simulation results}
+\subsection*{Question 6}
 
-\subsection*{Properties needed for the Silica Gel}
-A sufficient porosity to encapsulate 40w\% of $CaCl_2$ is, it should be an open porosity
-The pore diameter should not be too large and the pore volume should be large enough.
-The hydrophobicity 
-\\Indeed, if the gel is hydrophilic, it could have a negative impact during the impregnation by hindering the contact with the brine solution and makes the incorporation of calcium chloride harder. This feature has to be studied in order to identify if a surface modification of the gel is necessary. As a matter of fact, a surface modification is an additional step of the process which could lead to a major increase of the gel cost.
-\\xerogel
 
-%---------------------------------------------------
-\section{Experimental procedure}
-The following products were used: Rice Husk Ash (RHA) from India, NaOH 97wt.\% pellet, n-heptane 99wt.\%, tetraethylorthosilicate 98wt.\%\\
-The general steps of the preparation of the silica gel are shown on fig. []. %The incorporation of the $CaCl_2$ is available on fig. [].
-\subsection{Synthesis of the silica gel}
-\subsubsection*{Dissolution of rice husk ash}
-Different masses (2.5g, 5g) of rice husk ash were firstly dissolved with 40 ml of NaOH 4M. The dissolution was done in a pressure digestion vessel (model DAB-2 from Berghof). The solution was heathen during 1 hour to reach 150°C and then stabilized at this temperature for an hour. The dissolution was carried out with and without agitation.
-Afterwards, the solutions were filtered. A second filtration was required a few hours after the first one.
-\subsubsection*{Gelation}
-The gelation was performed at different pH (5, 6, 7) during 24h at room temperature. In order to obtain these different pH, 5ml of the solution were neutralised with $HNO_3$ 2M. The solution was then adjusted to the corresponding pH with $HNO_3$ 1M.\\
-Afterwards, the gel was immersed into deionised water during 24h. 
-\subsubsection*{Surface modification}
-The surface modification was required to render the gel hydrophobic. Half of the samples were immersed in a solution of TEOS in order to render the gel hydrophobic. The gel was immersed into 30ml of a 15vol.\% TEOS/35vol.\% ethanol/50vol.\% n-hexane solution for 24h at room temperature. Afterwards, the gels were immersed into n-hexane for 24h.
-\subsubsection*{Drying}
-All the samples were dried at ambiant pressure during 2h successively at 60°C and 110°C.
-
-\subsection{Preparation of the composite}
-The composite was synthesized using different steps. The silica gel was firstly dehydrated in a oven at 200°C for 4h until the mass remained constant. The matrix was then cool down until reaching ambient pressure.
-\textcolor{red}{On peut parler de l'analyse du RHA par XRF et dire sa composition mettre le petit tableau en image et commenté que c'est un déchet autement concentré en silice et qu'il est donc normal de le valoriser}
+$\{F_i\}=\int_{V} (B_{(q)})^t\{S_{(q)}\}dV$
+but $\{B_{(q)}\}$ and $\{S_{(q)}\}$ are defined differently in the two cases.
+The evanouissantes deformation tensor is not objective, while the Green tensor is.
+\\The modelling assumptions that has to be taken in order to have the same response given by those two elements is to say we have small angles.
 
 
 
+\section*{Plasticity around a hole}
+\subsection*{Question 7}
+Les contraintes ne dépendent que de la déformation élastique. Deformation élastique= déformation totale-déformation plastique.
 
-%\subsubsection*{Surface modification}
-%After the gelation step, a part of the silica gel produced has undergo a surface modification. 
-%A TEOS solution made of 15\% of Tetraorthosilicate, 35\% of ethanol and 50\% of n-hexane was prepared. The pourcentage are given in volume fraction. The silica gel was immersed during 24h in the TEOS solution and then 24h in n-hexane,
+If we plots the les contraintes in elastic cases, it will not change anything. The only change will be the signification of the colour, but la carte de la répartitions des couleurs sera la même.
+\\In the plastic case, la carte des contraintes va changer au cours du chargement.
+Comme il n'y a pas de distribution uniforme des contraintes spatiales, on a une redistribution de contraintes. La contraintes ne se distribue alors pas de manière uniforme dans le matériau. certains endroits vont alors rentrer en plasticité plus vite --> la réaction instantannée du matériau devient alors beaucoup plus douce.
 
+\section*{Detecting the onset of necking in a tensile test
+}
 
-%\subsubsection*{Drying}
+\subsection*{Question 8}
 
-
-\subsubsection*{\textbf{$CaCl_2$} incorporation}
-
-\cite{Courbon}
-According to 
-A solution of saumure was used. It is a solution of deionized water enriched in $CaCl_2$. This solution is then \textcolor{red}{mise en contact avec le silica gel puis séchée \cite{pda}}. In order to have a high w\% of $CaCl_2$ incorporated within the silica gel, it is necessary to realize numerous contact and drying process.
-\subsection{Characterization}
-\subsubsection*{X-ray diffraction}
-The x-ray diffraction was carried out on a Bruker XRD 500 apparatus. The aim of this method is to determine the crystallographic structure of the samples.
-\subsubsection*{X-ray fluorescence}
-The x-ray fluorescence was carried out on a Bruker S4 Pioneer. The aim of this method is to determine the composition of the samples.
-\subsubsection*{Inductive coupled plasma atomic emission spectroscopy}
-
-\subsubsection*{Fourier transform infrared spectroscopy}
-The FTIR was carried out on []. 3mg of the sample were mixed with 97mg of KBr to form a pellet. The FTIR was used in order to confirm the surface modification of the samples.
-\subsubsection*{Mercury porosimetry}
-
-\subsubsection*{BET}
-
-
-
-%---------------------------------
-\section{Results and discussion} 
-\subsection{Characterization of the rice husk ash}
-The Rice Husk ash received came from India. The ash were analysed by XRF and XRD. The results of the XRF are available on table [] and show that most of the ash is composed of silica. It would be possible to increase the relative content of silica gel by []. However, due to the high content of silica, it won't be necessary to do so. \\
-The XRD available on fig.[] shows that the ash is not completely amorphous. Different crystalline phases are present and will make the dissolution more difficult. 
-\subsection{Dissolution of the rice husk ash}
-\subsubsection{Effect of  rice husk ash mass on the dissolution yield}
-%Si on fait ça, il faut parler de la solubilité
-Two different samples are shown on table []. The main difference between both samples is the mass of rice husk ash. The dissolution yield of the sample with the higher mass shows the worst results. The first reason is that the dissolution was done without agitation. Therefore, there was less contact between the NaOH and RHA, leading to a bad dissolution. Another reason for these results is an excess of $SiO_2$ that leads to precipitation. 
-\subsubsection{Effect of the mixing of the dissolution yield}
-On table [], the dissolution yield is available for different samples. Similar conditions were applied, and the only difference was the agitation. There was no agitation for the first sample while the second solution was shaken every 15 minutes during the dissolution. The concentration of Si was determined by ICP. The results show that the sample agitated shows a higher concentration than the other one, leading to a higher dissolution yield. For that reason, the dissolution was applied with agitation for the other solutions.
-\subsubsection{Mass balance of the different samples}
-As the aim of this project is to produce cheap silica gel, it is necessary to know what is happening to the different elements used during this project. For that reason, a mass balance of the different samples was done. It allows to see where the different elements are going and what are the losses. The table of the mass balance is available in the annexes.
-\subsubsection{Brown residue}
-
-\subsection{Gelation}
-\subsubsection{Effect of the pH on the final properties}
-The physical properties of the different samples are presented on table []. as
-
-
-
-
-
-
-Study of the weight used for the dissolution 
-\textcolor{red}{échantillons 1 et 2 comparés à 3 et 4 montrent que la masse et donc le contact avec le NaOH joue un role lors de la dissolution (jusque là rien de bien nouveau).
-\\Les échantillons 5 et 6 ont été agités et dissolution à Temp ambiante comparés au échantillons 7 et 8 agités aussi mais dissout à 150 degrés--> montre que la température influence ++ si on compare 7et 8 avec 3 et 4 on voit que on a une plus grande dissolution avec agitation que sans (normal aussi).
-\\Ensuite on peut mettre notre tableau de dissolution où on explique ce qui a été fait pour chaque échantillons, on fait le mass balance qu'on a réussi à faire grâce à XRD et XRF et ICP}
-
-\textcolor{red}{ parle de ce qu'on obtient
-on pourrait placer un joli petit tableau à la fin avec le bilan de masse, du genre: durant ce projet, youri a mangé 4 gauffres, 2 pizzas, 3 sandwichs, des ailes de poulets, des frites, a perdu 75h de sommeil, 
-\\$m_{initiale\, de \, Youri}=trop$ et là c'est le drame --> $m_{finale\, de \, Youri}=beaucoup\; trop$}
-
-
-
-\section{Conclusion}
-It has (Mr.) been seen that silica gel is cool.
-
-\section{Further work}
-\clearpage
-\bibliographystyle{unsrt}
-\bibliography{Bibliography.bib}
+\section*{
+Simulation of an extrusion process}
+\subsection*{Question 9}
 \end{document}
 
 
